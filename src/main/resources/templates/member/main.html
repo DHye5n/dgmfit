@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+    <link rel="stylesheet" href="/css/main2.css">
+    <script th:inline="javascript" type="text/javascript"></script>
+</head>
+<body>
+<div class="header">
+    <a href="login.html" class="A"><img src="/img/logo124pc.png"></a>
+    <div class="login" id="login">
+        <div th:if="${session.userID == null}" class="B"><a href="login.html">로그인</a></div>
+        <br>
+        <div th:if="${session.userID == null}"class="B"><a href="terms.html">회원가입</a></div>  <br>
+<!--        <div th:if="${session.userID != null}"><a th:text="'회원 : ' + ${session.userName}"></a></div>-->
+        <div th:if="${session.userID != null}"class="B"><a href="mypage.html">마이페이지</a></div>
+        <!--    <li id="userName" th:text="'회원' + ${session.userName} + '님 환영합니다.'"  ></li>-->
+        <div th:if="${session.userID != null}"class="B"><a href="userLogout.html">로그아웃</a></div>
+        <div th:if="${session.userID != null}"class="B"><a href="serviceCenter.html">게시판</a></div>
+    </div>
+</div>
+
+<hr>
+    <div class="background">
+        <div class="top-container">
+            <nav>
+                <ul>
+                    <li><a href="#">소개</a></li>
+                    <li><a href="#">루틴</a></li>
+                    <li><a href="#">식단</a></li>
+                    <li><a href="#">상품</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="bgimg">
+            <img src="/img/top-background.png" >
+        </div>
+    </div>
+    <footer>
+
+        <p ><span> DGM.fit Project</span>  <span>Develop Period = 8.17 - 9.30;</span> <span>PJ NAME = DONG, GA, MIN;</span></p>
+
+    </footer>
+</body>
+</html>

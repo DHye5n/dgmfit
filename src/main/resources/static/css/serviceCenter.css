@@ -1,0 +1,107 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+.max-container {
+    max-width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+.tts-container{
+    display: flex;
+    align-items: center;
+
+}
+.header2{
+    display: flex;
+    margin-left: 40%;
+
+}
+
+.header2 .user__mypage {
+    padding-left: 20px;
+
+}
+
+.board-list .board-list-header{
+    margin-left: -5px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+
+}
+.board-list-item2{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+
+}
+.max-container select[name="searchOption"], input[type="text"], button, submit {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+
+}
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #2980b9;
+}
+.button-container {
+    margin-left: auto;
+    padding: 2px;
+}
+.submitBtn{
+
+    padding: 10px 10px;
+    font-size: 1em;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color:rgb(6, 73, 121);
+    color: #ececec;
+    font-weight: bold;
+    cursor: pointer;
+}
+.submitBtn2{
+    border-radius: 4px;
+    padding: 10px 10px;
+    font-size: 1em;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    background-color:rgb(6, 73, 121);
+    color: #ececec;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+a {
+    text-decoration: none;
+}
+
+
+
+#list {
+    margin-top: 3%;
+}
+.board-list-item2 input[type="text"] {
+    outline: none;
+    border:0px #fff;
+
+}
+input[type="text"]:focus {
+    outline: none;
+    border:0px #fff;
+
+}

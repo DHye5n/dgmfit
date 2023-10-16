@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+
+        }
+
+        .board-container {
+            max-width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+
+        }
+
+        .board-container input {
+            width: 70%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .board-container input[type="submit"] {
+            background-color:rgb(6, 73, 121);
+            color: white;
+            cursor: pointer;
+        }
+
+        .board-container input[type="submit"]:hover {
+            background-color:rgb(6, 73, 121);
+        }
+
+        .board-container input[type="button"] {
+            background-color: #ccc;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .board-container input[type="button"]:hover {
+            background-color: #bbb;
+        }
+    </style>
+    </style>
+</head>
+<body>
+<div id=header_main>
+    <div class="header">
+        <a href="login.html" class="A"><img src="/img/logo124pc.png" class="img"></a>
+        <span class="login" id="login" >
+                    <a href="login.html">로그인</a>
+        </span>
+        <span class="login" id="sign">
+                    <a href="register.html">회원가입</a>
+        </span>
+
+
+    </div>
+    <hr>
+    <div class="background">
+
+        <div class="top-container">
+            <nav>
+                <ul>
+                    <li><a href="#">소개</a></li>
+                    <li><a href="#">루틴</a></li>
+                    <li><a href="#">식단</a></li>
+                    <li><a href="#">상품</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div  class="bgimg">
+            <img src="/img/hd2.png" >
+        </div>
+    </div>
+</div>
+
+<div th:if="${session.autoID != null}"  class="board-container">
+    <form method="post" action="boardInsert" id="sbm">
+        제목<br>
+        <input type="text" name="boardName" placeholder="제목"><br><br>
+        <input type="hidden" name="boardTime"><!-- 시간 함수 활용 필요-->
+        구분<br>
+        <input type="text" name="boardDivide" placeholder="구분"><br><br>
+
+        <textarea name="boardContents" class="boardUpdate" style="width: 100%; height: 400px;" ></textarea><br>
+        <br><br>
+        <input type="submit" value="등록">
+    </form>
+</div>
+
+<div th:if="${!session.autoID.equals('admin')}">
+    관리자 전용 페이지
+</div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/main2.css">
+    <link rel="stylesheet" href="/css/serviceCenter.css">
+</head>
+<body>
+
+    <div class="header">
+        <a href="login.html" class="A"><img src="/img/logo124pc.png"></a>
+        <div class="login" id="login">
+<!--            <div class="user__login" th:if="${session.userID != null}">-->
+<!--                <a th:text="' 회원 ' + ${session.userName}"></a>-->
+<!--            </div>-->
+            <div class="header2">
+                <div th:if="${session.userID != null}" class="B">
+                    <a href="userLogout.html">로그아웃</a>
+                </div>
+                <div class="B" th:if="${session.userID != null}">
+                    <a href="mypage.html">마이페이지</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="background">
+
+        <div class="top-container">
+            <nav>
+                <ul>
+                    <li><a href="#">소개</a></li>
+                    <li><a href="#">루틴</a></li>
+                    <li><a href="#">식단</a></li>
+                    <li><a href="#">상품</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="bgimg">
+            <img src="/img/top-background.png" >
+        </div>
+    </div>
+
+
+<div class="max-container">
+    <div class="tts-container">
+        <div class="search-container">
+            <select name="searchOption">
+                <option value="author">작성자</option>
+                <option value="title">제목</option>
+            </select>
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+        </div>
+        <div class="button-container">
+            <a th:if="${session.autoID}" href="boardWrite" class="submitBtn">글 작성</a>
+        </div>
+    </div>
+    <hr>
+    <div th:if="${!boardList.isEmpty()}">
+        <ul class="board-list">
+            <li class="board-list-header" >
+                <span class="board-list-item">게시번호</span>
+                <span class="board-list-item">구분</span>
+                <span class="board-list-item">글 제목</span>
+                <span class="board-list-item">작성자</span>
+                <span class="board-list-item">게시일</span>
+                <span class="board-list-item">글 조회</span>
+            </li>
+        </ul>
+            <form th:each="board : ${boardList}" method="get" action="selectBoard">
+        <ul>
+            <li class="board-list-item2">
+                <input type="text" name="boardID" id="boardID" th:value="${board.getBoardID()}" readonly>
+                <input type="text" name="boardDivide" id="boardDivide" th:value="${board.getBoardDivide()}" readonly>
+                <input type="text" name="boardName" id="boardName" th:value="${board.getBoardName()}" readonly>
+                <input type="text" name="userName" id="userName" th:value="${board.getUserName()}" readonly>
+                <input type="text" name="boardTime" id="boardTime" th:value="${board.getBoardTime()}" readonly>
+                <input type="submit" value="이동" class="submitBtn2">
+            </li>
+        </ul>
+            </form>
+    </div>
+    <div th:unless="${!boardList.isEmpty()}">
+        등록된 게시글이 없습니다
+    </div>
+</div>
+
+<footer>
+
+    <p ><span> DGM.fit Project</span>  <span>Develop Period = 8.17 - 9.30;</span> <span>PJ NAME = DONG, GA, MIN;</span></p>
+
+</footer>
+<script>
+    var message = "[[${message}]]";
+    if (message && message.trim() !== "") {
+        alert(message);
+    }
+
+    // // 총 개시글 수
+    // let totalPage = 100;
+    // // 한 페이지당 출력되는 개시글 수
+    // let page_num = 10;
+    // // 블럭 수
+    // let block_num = 10;
+    // // 블럭의 총 수 계산
+    // let total_block = totalPage%10 === 0? totalPage/10 : totalPage/10+1;
+    // // 현재 블럭 위치
+    // let current_block = 1;
+    // // 블럭 출력
+    // function block_print(front_block) {
+    //     /*
+    //      1. 이전, 다음 블럭 속성 처리
+    //      2. 기존 블럭 모두 삭제
+    //      3. 범위 안의 블럭 생성 및 추가
+    //      */
+    //     current_block = front_block;
+    //
+    //     // 이전으로 갈 블럭이 없으면
+    //     if (front_block <= 1) {
+    //         document.querySelector(".before_move").style.visibility = "hidden";
+    //     }
+    //     else {
+    //         document.querySelector(".before_move").style.visibility = "visible";
+    //     }
+    //
+    //     // 다음으로 갈 블럭이 없으면
+    //     if (front_block + block_num >= total_block) {
+    //         document.querySelector(".next_move").style.visibility = "hidden";
+    //     }
+    //     else {
+    //         document.querySelector(".next_move").style.visibility = "visible";
+    //     }
+    //
+    //     // 블럭 추가할 공간
+    //     let block_box = document.querySelector(".block");
+    //     // 기존 블럭 모두 삭제
+    //     block_box.replaceChildren();
+    //     console.log("remove");
+    //
+    //     for (let i = front_block; i <= total_block && i < front_block + block_num; i++ ) {
+    //         console.log("add element");
+    //
+    //         // 버튼 생성
+    //         let button = document.createElement("button");
+    //         button.textContent = i;
+    //         // 버튼을 클릭하면 게시글이 변경되는 이벤트
+    //         button.addEventListener("click", function(event) {
+    //            post_data_print(i);
+    //         });
+    //         // 블럭에 추가
+    //         block_box.appendChild(button);
+    //     }
+    // }
+    //
+    // function before() {
+    //     block_print(current_block - block_num)
+    //     console.log("이전");
+    // }
+    // function next() {
+    //     block_print(current_block + block_num)
+    // }
+    //
+    // // 화면 로드시 실행
+    // window.onload = function () {
+    //     // 게시글 데이터 출력
+    //     post_data_print(1)
+    //     // 블럭 출력
+    //     block_print(1)
+    // }
+</script>
+</body>
+</html>

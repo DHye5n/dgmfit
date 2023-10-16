@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>findPwd</title>
+</head>
+<body>
+<div class="user_area">
+    <div class="user_area_inner">
+        <h2>비밀번호 찾기</h2>
+        <div class="find_form">
+            <form method="post" action="/findUserPw">
+                <fieldset>
+                    <legend>비밀번호 찾기</legend>
+                    <input type="text" class="user_input_id" name="userID" placeholder="아이디를 입력하시오.">
+                    <input type="text" class="user_input_name" name="userName" placeholder="이름을 입력하시오.">
+                    <input type="text" class="user_input_num" name="userPhone" placeholder="전화번호를 입력하시오.">
+                    <input type="submit" class="btn_login" value="확인" >
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var message = "[[${message}]]";
+    if (message && message.trim() !== "") {
+        alert(message);
+    }
+</script>
+</body>
+</html>
